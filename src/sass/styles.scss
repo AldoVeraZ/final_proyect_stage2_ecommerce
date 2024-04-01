@@ -1,0 +1,23 @@
+// En el archivo styles.scss del Proyecto 2
+
+// Importar variables del Proyecto 1
+@import "./utils/variables";
+
+// Estilos base del Proyecto 1
+@import "./base/base";
+@import "./base/typography";
+
+// Estilos de la barra de navegación
+// @import "./layout/cartnav";
+@import "./layout/header";
+@import "./layout/navigation";
+@import "./layout/footer";
+
+@import "./components/button-menu";
+@import "./components/logo";
+
+// Estilos de las páginas
+@import "./pages/home"; // Estilos para la página Home
+@import "./pages/about"; // Estilos para la página About
+@import "./pages/contact"; // Estilos para la página Contact
+@import "./pages/upload"; // Estilos para la página Upload

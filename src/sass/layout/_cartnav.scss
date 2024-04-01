@@ -1,0 +1,63 @@
+// .navBar__container {
+//   align-items: center;
+//   background-color: $secondary-color;
+//   display: flex;
+//   height: $navbar-height;
+//   justify-content: space-between;
+//   padding: 0 1rem;
+//   a {
+//     font-size: $font-size-md;
+//     text-decoration: none;
+//     color: $typography-color;
+//     &:hover {
+//       color: $typography-link-hover;
+//     }
+//   }
+// }
+
+.cart-nav {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; // Tres columnas con proporciones relativas.
+  align-items: center; // Centrar los elementos verticalmente.
+  position: fixed; // O puedes usar `absolute` si prefieres.
+  top: 0;
+  left: 50%; // Colocar el elemento al 50% de la izquierda de la pantalla
+  transform: translateX(
+    -50%
+  ); // Desplazar el elemento un 50% hacia atrás en el eje X para centrarlo
+  width: 1000px; // Ancho máximo igual al `.top-nav`
+  z-index: 101; // Asegurarse de que esté por encima de otros elementos.
+  padding: 0.5rem; // Añade algo de padding si es necesario.
+  box-sizing: border-box; // Asegúrate de que el padding y border estén incluidos en el ancho definido.
+
+  // Asegurándose de que el logo y el carrito se alineen a los extremos
+  .top-nav__logo {
+    grid-column: 1 / 2; // Ocupa la primera columna.
+    justify-self: start; // Alinear el logo a la izquierda.
+  }
+
+  .search-form {
+    grid-column: 2 / 3; // Ocupa la segunda columna.
+    justify-self: center; // Alinear el formulario de búsqueda al centro.
+  }
+
+  .cart-container {
+    grid-column: 3 / 4; // Ocupa la tercera columna.
+    justify-self: end; // Alinear el carrito a la derecha.
+  }
+
+  .search-form {
+    input[type="search"] {
+      padding: 0.5em;
+      margin-right: 0.5em;
+      border-radius: 15px;
+    }
+    button {
+      background-color: silver;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+a,
+a:hover {
+  text-decoration: none;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 25px;
+  background: #ef4b3f;
+  span {
+    color: #fff;
+  }
+  .search-form {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-grow: 0;
+    justify-content: flex-end;
+    li {
+      margin: 0 5px;
+    }
+  }
+  a {
+    color: #fff;
+    &:hover {
+      color: #222;
+    }
+  }
+}
+
+nav {
+  background: #222;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  a {
+    color: #fff;
+    &:hover {
+      color: #ef4b3f;
+    }
+  }
+  .logo {
+    flex: 1;
+    a {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      &:hover {
+        color: #fff;
+      }
+      img {
+        width: 40px;
+        margin-right: 10px;
+      }
+    }
+  }
+  .menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    li {
+      padding: 15px 20px;
+      font-size: 16px;
+    }
+  }
+  .toggle {
+    font-size: 30px;
+    display: none;
+  }
+  .toggle img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  nav {
+    display: block;
+    position: relative;
+    padding: 15px 20px;
+    .menu {
+      margin-top: 15px;
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+    .toggle {
+      display: block;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
+  }
+}

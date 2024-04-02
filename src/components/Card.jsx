@@ -24,7 +24,7 @@ function Card({
       <p>{duration} min.</p>
       <p>Puntuación: {rating}</p>
       {isAwarded ? <p>Ha sido premiada</p> : undefined}
-      <Counter />
+      <Counter id={id} />
     </div>
     // </Link>
   );

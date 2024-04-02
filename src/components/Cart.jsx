@@ -4,11 +4,12 @@ import { CartContext } from "../context/CartContext";
 import Icon from "./Icon";
 
 function Cart() {
-  const { moviescartList } = useContext(CartContext);
+  const { moviesCartList } = useContext(CartContext);
 
   return (
     <button>
       <Icon icon={faShoppingCart} />
+      {moviesCartList.reduce((acc, movie) => acc + movie.quantity, 0)}
     </button>
   );
 }

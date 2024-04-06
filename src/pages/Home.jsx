@@ -5,7 +5,7 @@ import ProductsWrapper from "../components/ProductsWrapper";
 
 function Home() {
   return (
-    <div>
+    <div className="vertical-padding">
       {/* Contenedor principal para las tarjetas, con padding */}
       {/* <div className="horizontal-padding vertical-padding"> */}
       <ProductsWrapper />

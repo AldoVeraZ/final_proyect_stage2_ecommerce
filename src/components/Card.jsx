@@ -1,13 +1,15 @@
 import React from "react";
 import Counter from "./Counter";
 
-function Card({ id, name, category, brand, shortDesc, delivery }) {
+function Card({ id, name, img, category, brand, shortDesc, delivery }) {
   return (
     // <Link to={`/movies/detail/${id}`} as="div" className="card__container">
     <div className="card__container">
-      <div>
+      <img src={img} alt={shortDesc} />
+      <div className="card__data">
         <h2>
-          {name} <span>( {brand} )</span>
+          {name}
+          <span>( {brand} )</span>
         </h2>
         <b>{category}</b>
         <p>{shortDesc}</p>

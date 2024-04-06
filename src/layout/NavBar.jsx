@@ -9,7 +9,7 @@ function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="top-header">
+    <header className="top-header horizontal-padding">
       <div>
         <div className="top-bar">
           <span className="search-form">

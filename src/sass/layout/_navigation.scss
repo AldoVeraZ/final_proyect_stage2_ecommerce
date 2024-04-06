@@ -7,8 +7,8 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 25px;
-  background: #ef4b3f;
+  padding: 10px 10%;
+  // background: #000000;
   span {
     color: #fff;
   }
@@ -35,14 +35,14 @@ a:hover {
 }
 
 nav {
-  background: #222;
+  // background: #222;
   padding: 5px 20px;
   display: flex;
   align-items: center;
   a {
     color: #fff;
     &:hover {
-      color: #ef4b3f;
+      color: #33ff33;
     }
   }
   .logo {
@@ -64,6 +64,7 @@ nav {
     display: flex;
     align-items: center;
     list-style: none;
+    text-transform: uppercase;
     li {
       padding: 15px 20px;
       font-size: 16px;

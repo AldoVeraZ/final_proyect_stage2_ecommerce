@@ -1,29 +1,19 @@
 import React from "react";
 import Counter from "./Counter";
 
-function Card({
-  id,
-  title,
-  year,
-  genre,
-  director,
-  duration,
-  rating,
-  isAwarded,
-}) {
+function Card({ id, name, category, brand, shortDesc, delivery }) {
   return (
     // <Link to={`/movies/detail/${id}`} as="div" className="card__container">
     <div className="card__container">
-      <h2>
-        {title}{" "}
-        <span>
-          ( {genre} - {year} )
-        </span>
-      </h2>
-      <b>{director}</b>
-      <p>{duration} min.</p>
-      <p>Puntuación: {rating}</p>
-      {isAwarded ? <p>Ha sido premiada</p> : undefined}
+      <div>
+        <h2>
+          {name} <span>( {brand} )</span>
+        </h2>
+        <b>{category}</b>
+        <p>{shortDesc}</p>
+        {delivery ? <p>Envio sin cargo.</p> : undefined}
+      </div>
+
       <Counter id={id} />
     </div>
     // </Link>

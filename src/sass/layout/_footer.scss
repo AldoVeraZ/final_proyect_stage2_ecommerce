@@ -4,13 +4,23 @@ footer {
   background: linear-gradient(to top, #8a0303 0%, #333333 100%);
   color: #fff;
   text-align: center;
-  bottom: 0;
+
   width: 100%;
+
+  bottom: 0;
+
+  img {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #fff;
+    border-radius: 9px;
+  }
 
   div a {
     text-decoration: none;
     list-style: none;
     color: #fff;
+    margin: 0 0.5rem;
   }
 
   .phone {
@@ -20,7 +30,8 @@ footer {
   }
 
   div {
-    padding: 25px;
+    padding-top: 4px;
+    padding-bottom: 8px;
   }
 }
 

@@ -1,8 +1,5 @@
-// En el archivo Footer.jsx del Proyecto 2
-
-// En el archivo Footer.jsx del Proyecto 2
-
 import React from "react";
+import SocialMedia from "../components/SocialMedia";
 
 function Footer() {
   return (
@@ -14,8 +11,11 @@ function Footer() {
         <p>Terminos y condiciones</p>
       </div>
       <div>
+        <p>
+          <SocialMedia />
+        </p>
         <h2>©Toys Collection 2024-♾</h2>
-        <p>Desarrollado por LoneWolfDevv</p>
+        <p>Desarrollado por LoneWolfDev</p>
       </div>
       <div>
         <h2>Servicio al Cliente</h2>

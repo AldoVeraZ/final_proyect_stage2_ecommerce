@@ -7,7 +7,7 @@ import Home from "../pages/Home";
 import About from "../pages/About"; // Importar la página About del Proyecto 1
 import Contact from "../pages/Contact"; // Importar la página Contact del Proyecto 1
 import Upload from "../pages/Upload"; // Importar la página Upload del Proyecto 1
-import Footer from "../components/Footer";
+import Footer from "../layout/Footer";
 // Importar el componente Footer del Proyecto 1
 
 function RouterApp() {

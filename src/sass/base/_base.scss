@@ -5,6 +5,12 @@
 // }
 
 // base/_base.scss
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
 
 a {
   text-decoration: none;
@@ -15,8 +21,6 @@ body {
   background-color: #eaeaea;
   color: var(--text-color);
   padding-top: 8rem;
-
-  margin: 0;
 }
 
 /* en moviles devices el padding minimo */

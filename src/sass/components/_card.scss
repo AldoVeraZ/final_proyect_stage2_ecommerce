@@ -16,7 +16,20 @@
     text-align: start;
     width: 20%;
     .card__data {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Esto distribuirá el espacio uniformemente */
       padding: 1rem;
+      height: 100%; /* Establece una altura para que justify-content tenga efecto */
+    }
+    .card__data h2,
+    .card__data b,
+    .card__data p {
+      margin-bottom: 0.5rem; /* Añade un margen en la parte inferior de cada elemento */
+    }
+
+    .card__data p:last-child {
+      margin-bottom: 0; /* Elimina el margen del último párrafo si lo deseas */
     }
     img {
       width: 100%;

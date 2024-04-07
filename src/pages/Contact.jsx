@@ -4,7 +4,7 @@ import React from "react";
 
 function Contact() {
   return (
-    <div>
+    <div className="vertical-padding">
       {/* Contenido de la página "Contact" del Proyecto 1 */}
       <h1>Contact</h1>
       <p>Esta es la página "Contact" del Proyecto 2.</p>

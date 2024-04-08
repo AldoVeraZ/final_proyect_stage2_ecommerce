@@ -3,7 +3,7 @@ import SocialMedia from "../components/SocialMedia";
 
 function Footer() {
   return (
-    <footer>
+    <footer className="social__wrapper">
       <div>
         <h2>Información</h2>
         <a href="./about">Nosotros</a>{" "}

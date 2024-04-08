@@ -4,7 +4,7 @@ import React from "react";
 
 function Upload() {
   return (
-    <div className="vertical-padding">
+    <div className="bla">
       {/* Contenido de la página "Upload" del Proyecto 1 */}
       <h1>Upload</h1>
       <p>Esta es la página "Upload" del Proyecto 2.</p>

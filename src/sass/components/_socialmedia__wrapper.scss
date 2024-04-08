@@ -1,0 +1,11 @@
+.social__wrapper {
+  img {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #fff;
+    border-radius: 9px;
+    &:hover {
+      background: lime;
+    }
+  }
+}

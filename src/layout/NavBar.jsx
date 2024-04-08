@@ -29,7 +29,7 @@ function NavBar() {
 
         <nav>
           <div className="logo">
-            <Link to="/">
+            <Link to="/about">
               <img src={logo} alt="logo" />
               <div>
                 <h5>

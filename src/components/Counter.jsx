@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
-import Text from "./Text";
-import Button from "./Button";
 import { CartContext } from "../context/CartContext";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+
+import Text from "./Text";
+import Button from "./Button";
 
 const INITIAL_STATE = 0;
 

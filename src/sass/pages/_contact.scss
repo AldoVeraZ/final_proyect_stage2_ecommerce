@@ -1,4 +1,4 @@
-.contact {
+/* .contact {
   background-color: #b0b0b0;
   color: var(--text-color);
   font-size: 18px;
@@ -169,3 +169,15 @@
 }
 /* Color Sangre #8A0303 */
 /* Color de Robocop #b0b0b0 */
+
+/* Profe */
+
+.contact__container {
+  margin: 0 10%;
+  @media (min-width: 600px) {
+    width: 50%;
+  }
+  @media (min-width: 1200px) {
+    width: 35%;
+  }
+}

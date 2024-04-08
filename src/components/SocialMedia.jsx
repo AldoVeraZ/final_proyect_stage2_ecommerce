@@ -7,7 +7,7 @@ import iconGithub from "../assets/faGithub.svg";
 
 function SocialMedia() {
   return (
-    <div>
+    <div className="socialmedia__wrapper">
       <Link to="https://www.facebook.com/" target="_blank">
         <img src={iconFacebook} alt="Facebook Link" />
       </Link>

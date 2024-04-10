@@ -1,7 +1,10 @@
 import React from "react";
 import Button from "./Button";
 
-function Form({ children, onSubmit, labelButton }) {
+import Icon from "./Icon";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+
+function Form({ children, onSubmit, labelButton, loading }) {
   return (
     <form
       onSubmit={(e) => {
@@ -13,8 +16,18 @@ function Form({ children, onSubmit, labelButton }) {
       {children}
       <Button
         type="submit"
-        label={labelButton}
-        className="form__button-submit"
+        label={
+          loading ? (
+            <>
+              <Icon icon={faSpinner} />
+              {" Enviando..."}{" "}
+            </>
+          ) : (
+            labelButton
+          )
+        }
+        className={"form__button-submit"}
+        disabled={loading}
       />
     </form>
   );

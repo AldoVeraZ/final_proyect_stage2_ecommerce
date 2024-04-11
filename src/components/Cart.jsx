@@ -15,6 +15,7 @@ function Cart() {
           icon={faShoppingCart}
           className="cart__navbar-button"
           action={() => setOpen(!open)}
+          disabled={!moviesCartList.length}
         />
         {moviesCartList.length ? (
           <div className="cart__badge">
@@ -24,9 +25,15 @@ function Cart() {
           </div>
         ) : undefined}
       </div>
-      <Modal show={open}>
-        <Button icon={faClose} className="" action={() => setOpen(!open)} />
-        Modal
+      <Modal show={open} onClose={() => setOpen(false)}>
+        <div className="modal__header ">
+          <Button
+            icon={faClose}
+            className="modal__close fa-2x"
+            action={() => setOpen(!open)}
+          />
+        </div>
+        {JSON.stringify(moviesCartList)}
       </Modal>
     </>
   );

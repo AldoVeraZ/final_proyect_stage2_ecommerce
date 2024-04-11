@@ -7,7 +7,7 @@ import Button from "./Button";
 
 const INITIAL_STATE = 0;
 
-export default function Counter({ id }) {
+export default function Counter({ id, movieData }) {
   const [count, setCount] = useState(INITIAL_STATE);
   const { addMovie, removeMovie } = useContext(CartContext);
 
@@ -19,6 +19,7 @@ export default function Counter({ id }) {
     setCount(count + 1);
     addMovie({
       id,
+      movieData,
       quantity: count + 1,
     });
   };

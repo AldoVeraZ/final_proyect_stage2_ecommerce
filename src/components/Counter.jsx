@@ -1,21 +1,27 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import Text from "./Text";
 import Button from "./Button";
 
-const INITIAL_STATE = 0;
+export default function Counter({ id, movieData, initialValue = 0 }) {
+  const [count, setCount] = useState(initialValue);
+  const { addMovie, removeMovie, moviesCartList } = useContext(CartContext);
 
-export default function Counter({ id, movieData }) {
-  const [count, setCount] = useState(INITIAL_STATE);
-  const { addMovie, removeMovie } = useContext(CartContext);
+  useEffect(() => {
+    const movie = moviesCartList.find((movie) => movie.id === id);
 
-  const decrement = () => {
+    setCount(movie?.quantity || 0);
+  }, [moviesCartList]);
+
+  const decrement = (e) => {
+    e.stopPropagation();
     if (count > 0) setCount(count - 1);
     removeMovie(id);
   };
-  const increment = () => {
+  const increment = (e) => {
+    e.stopPropagation();
     setCount(count + 1);
     addMovie({
       id,

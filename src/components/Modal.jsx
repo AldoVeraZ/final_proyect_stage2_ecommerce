@@ -22,8 +22,7 @@ function Modal({ children, show, onClose }) {
         ref={modalRef}
         className="modal__container"
         tabIndex="0"
-        /*         onClick={(e) => e.stopPropagation()}
-         */ onBlur={onClose}
+        // onBlur={onClose}
         onKeyDown={handleKeyPress}
       >
         {children}

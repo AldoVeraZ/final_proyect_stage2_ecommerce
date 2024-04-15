@@ -1,5 +1,6 @@
 import React from "react";
 import FormLayout from "../layout/FormLayout";
+import { postProducts } from "../util/api";
 
 const INITIAL_STATE = {
   name: "",
@@ -62,7 +63,7 @@ function Upload() {
     <FormLayout
       title="Upload a new figure"
       inputProps={inputProps}
-      onSubmit={console.log}
+      onSubmit={postProducts}
       labelSubmit="Save new figure"
       initialState={INITIAL_STATE}
     />

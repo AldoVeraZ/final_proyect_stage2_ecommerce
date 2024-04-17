@@ -11,9 +11,10 @@ function InputGroup({
   const [error, setError] = useState("");
 
   const validatedOnChange = (e) => {
-    onchange(e);
+    onChange(e);
     setError(validation(e.target.value));
   };
+
   return (
     <div
       className={`input-group__container${
@@ -36,10 +37,11 @@ function InputGroup({
           name={id}
           type={inputType}
           onChange={validatedOnChange}
-          value={values[id]}
+          value={inputType !== "file" ? values[id] : ""}
           className={`input-group__input${error ? " error" : ""}`}
         />
       )}
+      <span className="input-group__text-error">{error}</span>
     </div>
   );
 }

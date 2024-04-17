@@ -7,6 +7,9 @@
     border-radius: 0.25rem;
     font-size: $font-size-sm;
     padding: 0.25rem;
+    &.error {
+      outline: 2px solid $error-color;
+    }
   }
   &.input-group__checkbox {
     flex-direction: row-reverse;
@@ -14,5 +17,9 @@
     .input-group__input {
       width: fit-content;
     }
+  }
+  .input-group__text-error {
+    font-size: $font-size-sm;
+    color: $error-color;
   }
 }

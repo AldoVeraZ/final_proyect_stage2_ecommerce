@@ -1,6 +1,12 @@
 import React from "react";
 import FormLayout from "../layout/FormLayout";
 import { postProducts } from "../util/api";
+import {
+  validatShort,
+  validateLong,
+  validatePrice,
+  validateStock,
+} from "../util/upload-validations";
 
 const INITIAL_STATE = {
   name: "",
@@ -10,10 +16,10 @@ const INITIAL_STATE = {
   category: "",
   shortDesc: "",
   longDesc: "",
-  delivery: "",
+  delivery: false, // Asegúrate de que esto concuerde con cómo tu API maneja los booleanos
   ageFrom: 0,
   ageTo: 0,
-  img: "",
+  img: "", // Campo de imagen inicializado como vacío
 };
 
 function Upload() {
@@ -24,26 +30,30 @@ function Upload() {
     price: {
       inputLabel: "Precio",
       inputType: "number",
+      validation: validatePrice,
     },
     stock: {
       inputLabel: "Stock inicial",
       inputType: "number",
+      validation: validateStock,
     },
     brand: {
       inputLabel: "Marca",
     },
     category: {
-      inputLabel: "Categoria",
+      inputLabel: "Categoría",
     },
     shortDesc: {
-      inputLabel: "Categoria",
+      inputLabel: "Descripción corta",
+      validation: validatShort,
     },
     longDesc: {
-      inputLabel: "Mensaje",
+      inputLabel: "Descripción larga",
       inputType: "textarea",
+      validation: validateLong,
     },
     delivery: {
-      inputLabel: "Envio sin cargo",
+      inputLabel: "Envío sin cargo",
       inputType: "checkbox",
     },
     ageFrom: {
@@ -55,16 +65,34 @@ function Upload() {
       inputType: "number",
     },
     img: {
-      inputLabel: "Foto de la figura",
-      inputType: "file",
+      inputLabel: "URL de la foto del producto",
+      inputType: "text", // Este campo será para ingresar URL
     },
   };
+
+  const handleSubmit = async (values) => {
+    // Si el campo de la imagen está vacío, se asigna la URL por defecto
+    const finalValues = {
+      ...values,
+      img: values.img || "https://i.imgur.com/hQjKrp4.png",
+    };
+
+    try {
+      const data = await postProducts(finalValues);
+      console.log("Producto cargado:", data);
+      // Manejo post-envío exitoso, como restablecer el formulario
+    } catch (error) {
+      console.error("Error al cargar el producto:", error);
+      // Manejo de errores
+    }
+  };
+
   return (
     <FormLayout
-      title="Upload a new figure"
+      title="Cargar nueva figura"
       inputProps={inputProps}
-      onSubmit={postProducts}
-      labelSubmit="Save new figure"
+      onSubmit={handleSubmit} // Usamos handleSubmit aquí
+      labelSubmit="Guardar nueva figura"
       initialState={INITIAL_STATE}
     />
   );

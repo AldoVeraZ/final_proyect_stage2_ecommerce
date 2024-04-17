@@ -29,13 +29,16 @@ function Contact() {
   };
 
   return (
-    <FormLayout
-      title="Envíanos un mensaje"
-      inputProps={inputProps}
-      onSubmit={postMessage}
-      labelSubmit="Enviar mensaje"
-      initialState={INITIAL_STATE}
-    />
+    <div className="vertical-padding">
+      <FormLayout
+        className="contact"
+        title="Envíanos un mensaje"
+        inputProps={inputProps}
+        onSubmit={postMessage}
+        labelSubmit="Enviar mensaje"
+        initialState={INITIAL_STATE}
+      />
+    </div>
   );
 }
 

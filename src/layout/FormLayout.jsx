@@ -6,6 +6,7 @@ import InputGroup from "../components/InputGroup";
 import { useForm } from "../hooks/useForm";
 
 function FormLayout({
+  className, // Añade esto
   title,
   inputProps,
   initialState,
@@ -16,7 +17,7 @@ function FormLayout({
   const [loadingForm, setLoadingForm] = useState(false);
 
   return (
-    <div className="vertical-padding form-layout__container">
+    <div className={` ${className}`}>
       <Text renderAs="h2" content={title} />
       <Form
         onSubmit={() => {

@@ -12,7 +12,7 @@ function ProductsWrapper() {
   }, []);
 
   return (
-    <div style={{ display: "flex" }}>
+    <div>
       <div className="card__wrapper">
         {products.map((product) => (
           <Card key={product.id} {...product} />

@@ -10,16 +10,16 @@ import {
 
 const INITIAL_STATE = {
   name: "",
-  price: 0,
-  stock: 0,
+  price: "",
+  stock: "",
   brand: "",
   category: "",
   shortDesc: "",
   longDesc: "",
-  delivery: false, // Asegúrate de que esto concuerde con cómo tu API maneja los booleanos
-  ageFrom: 0,
-  ageTo: 0,
-  img: "", // Campo de imagen inicializado como vacío
+  delivery: false,
+  ageFrom: "",
+  ageTo: "",
+  img: "",
 };
 
 function Upload() {
@@ -88,13 +88,16 @@ function Upload() {
   };
 
   return (
-    <FormLayout
-      title="Cargar nueva figura"
-      inputProps={inputProps}
-      onSubmit={handleSubmit} // Usamos handleSubmit aquí
-      labelSubmit="Guardar nueva figura"
-      initialState={INITIAL_STATE}
-    />
+    <div className="vertical-padding">
+      <FormLayout
+        className="upload" // Clase específica para estilos de Upload
+        title="Cargar nueva figura"
+        inputProps={inputProps}
+        onSubmit={handleSubmit} // Usamos handleSubmit aquí
+        labelSubmit="Guardar nueva figura"
+        initialState={INITIAL_STATE}
+      />
+    </div>
   );
 }
 

@@ -4,12 +4,32 @@ import { getProducts } from "../util/api";
 
 function ProductsWrapper() {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getProducts()
-      .then((data) => setProducts(data))
-      .catch((err) => console.error(err));
+      .then((data) => {
+        setProducts(data);
+        // Asegurarse de que el spinner solo se desactive después de un breve retardo
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1500); // Ajusta este tiempo según necesidades
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsLoading(false);
+      });
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="spinner-container">
+        {" "}
+        {/* Usar el contenedor para centrar el spinner */}
+        <div className="spinner"></div>
+      </div>
+    );
+  }
 
   return (
     <div>

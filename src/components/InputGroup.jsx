@@ -7,6 +7,7 @@ function InputGroup({
   onChange = () => {},
   validation = () => "",
   values,
+  ...props
 }) {
   const [error, setError] = useState("");
 
@@ -31,6 +32,7 @@ function InputGroup({
           value={values[id]}
           className={`input-group__input${error ? " error" : ""}`}
           required
+          {...props}
         ></textarea>
       ) : (
         <input
@@ -40,7 +42,8 @@ function InputGroup({
           onChange={validatedOnChange}
           value={inputType !== "file" ? values[id] : ""}
           className={`input-group__input${error ? " error" : ""}`}
-          required
+          /*      required */
+          {...props}
         />
       )}
       <span className="input-group__text-error">{error}</span>

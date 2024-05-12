@@ -9,7 +9,7 @@ function ProductsWrapper() {
   useEffect(() => {
     getProducts()
       .then((data) => {
-        setProducts(data);
+        setProducts(data.products);
         // Asegurarse de que el spinner solo se desactive después de un breve retardo
         setTimeout(() => {
           setIsLoading(false);

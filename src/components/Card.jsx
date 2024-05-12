@@ -1,10 +1,10 @@
 import React from "react";
 import Counter from "./Counter";
 
-function Card({ id, name, img, category, brand, shortDesc, delivery }) {
+function Card({ id, name, imgUrl, category, brand, shortDesc, delivery }) {
   return (
     <div className="card__container">
-      <img src={img} alt={shortDesc} />
+      <img src={imgUrl} alt={shortDesc} />
       <div className="card__data">
         <h2>
           {name} <span>({brand})</span>
@@ -17,7 +17,7 @@ function Card({ id, name, img, category, brand, shortDesc, delivery }) {
         id={id}
         movieData={{
           name,
-          img,
+          imgUrl,
           category,
           brand,
         }}

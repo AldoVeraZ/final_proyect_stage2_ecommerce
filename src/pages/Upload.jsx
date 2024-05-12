@@ -19,7 +19,6 @@ const INITIAL_STATE = {
   delivery: false,
   ageFrom: "",
   ageTo: "",
-  img: "",
 };
 
 function Upload() {
@@ -64,13 +63,14 @@ function Upload() {
       inputLabel: "Edad hasta",
       inputType: "number",
     },
-    img: {
-      inputLabel: "URL de la foto del producto",
-      inputType: "text", // Este campo será para ingresar URL
+    image: {
+      inputLabel: "SUBIR IMAGEN DE LA FIGURA",
+      inputType: "file",
+      accept: "image/*",
     },
   };
 
-  const handleSubmit = async (values) => {
+  /*   const handleSubmit = async (values) => {
     // Si el campo de la imagen está vacío, se asigna la URL por defecto
     const finalValues = {
       ...values,
@@ -85,7 +85,7 @@ function Upload() {
       console.error("Error al cargar el producto:", error);
       // Manejo de errores
     }
-  };
+  }; */
 
   return (
     <div className="vertical-padding">
@@ -93,7 +93,7 @@ function Upload() {
         className="upload" // Clase específica para estilos de Upload
         title="Cargar nueva figura"
         inputProps={inputProps}
-        onSubmit={handleSubmit} // Usamos handleSubmit aquí
+        onSubmit={postProducts} // Usamos handleSubmit aquí
         labelSubmit="Guardar nueva figura"
         initialState={INITIAL_STATE}
       />

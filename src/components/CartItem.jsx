@@ -1,7 +1,7 @@
 import React from "react";
 import Counter from "./Counter";
 
-function CartItem({ id, movieData, quantity }) {
+function CartItem({ _id, movieData, quantity }) {
   console.log("Brand:", movieData.brand);
   return (
     <div className="cart-item__container">
@@ -10,7 +10,7 @@ function CartItem({ id, movieData, quantity }) {
         <span>({movieData.brand})</span>
       </h2>
       <p>{movieData.category}</p>
-      <Counter id={id} movieData={movieData} initialValue={quantity} />
+      <Counter _id={_id} movieData={movieData} initialValue={quantity} />
     </div>
   );
 }

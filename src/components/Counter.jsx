@@ -5,12 +5,12 @@ import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import Text from "./Text";
 import Button from "./Button";
 
-export default function Counter({ id, movieData, initialValue = 0 }) {
+export default function Counter({ _id, movieData, initialValue = 0 }) {
   const [count, setCount] = useState(initialValue);
   const { addMovie, removeMovie, moviesCartList } = useContext(CartContext);
 
   useEffect(() => {
-    const movie = moviesCartList.find((movie) => movie.id === id);
+    const movie = moviesCartList.find((movie) => movie._id === _id);
 
     setCount(movie?.quantity || 0);
   }, [moviesCartList]);
@@ -18,13 +18,13 @@ export default function Counter({ id, movieData, initialValue = 0 }) {
   const decrement = (e) => {
     e.stopPropagation();
     if (count > 0) setCount(count - 1);
-    removeMovie(id);
+    removeMovie(_id);
   };
   const increment = (e) => {
     e.stopPropagation();
     setCount(count + 1);
     addMovie({
-      id,
+      _id,
       movieData,
       quantity: count + 1,
     });

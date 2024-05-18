@@ -1,7 +1,7 @@
 import React from "react";
 import Counter from "./Counter";
 
-function Card({ id, name, imgUrl, category, brand, shortDesc, delivery }) {
+function Card({ _id, name, imgUrl, category, brand, shortDesc, delivery }) {
   return (
     <div className="card__container">
       <img src={imgUrl} alt={shortDesc} />
@@ -14,7 +14,7 @@ function Card({ id, name, imgUrl, category, brand, shortDesc, delivery }) {
         {delivery ? <p>Envío sin cargo.</p> : undefined}
       </div>
       <Counter
-        id={id}
+        _id={_id}
         movieData={{
           name,
           imgUrl,

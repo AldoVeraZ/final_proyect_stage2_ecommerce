@@ -38,7 +38,7 @@ function Cart() {
             />
           </div>
           {moviesCartList.map((data) => (
-            <CartItem key={data.id} {...data} />
+            <CartItem key={data._id} {...data} />
           ))}
         </>
       </Modal>

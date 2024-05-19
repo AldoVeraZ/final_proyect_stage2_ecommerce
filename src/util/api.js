@@ -1,8 +1,9 @@
 import axios from "axios";
 
+console.log(process.env.REACT_APP_BASE_URL_API);
 const axiosInstance = axios.create({
   /*   baseURL: "https://661085820640280f219d1cd2.mockapi.io/api", */
-  baseURL: "http://localhost:3001/api/",
+  baseURL: process.env.REACT_APP_BASE_URL_API,
 });
 
 export const getProducts = async () => {

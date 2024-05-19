@@ -11,9 +11,7 @@ function Footer() {
         <p>Terminos y condiciones</p>
       </div>
       <div>
-        <p>
-          <SocialMedia />
-        </p>
+        <SocialMedia />
         <h2>©Toys Collection 2024-♾</h2>
         <p>Desarrollado por LoneWolfDev</p>
       </div>

@@ -3,6 +3,8 @@ import axios from "axios";
 console.log(process.env.REACT_APP_BASE_URL_API);
 const axiosInstance = axios.create({
   /*   baseURL: "https://661085820640280f219d1cd2.mockapi.io/api", */
+
+  /* https://final-proyect-stage2-ecommerce.vercel.app/ */
   baseURL: process.env.REACT_APP_BASE_URL_API,
 });
 

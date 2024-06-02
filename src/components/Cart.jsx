@@ -13,7 +13,7 @@ import Modal from "./Modal";
 import CartItem from "./CartItem";
 
 function Cart() {
-  const { productsCartList } = useContext(CartContext);
+  const { productsCartList, resetCart } = useContext(CartContext);
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
@@ -52,7 +52,7 @@ function Cart() {
               className="modal__btn-buy"
               label="Comprar"
               action={() => {
-                navigate("/checkout");
+                resetCart();
                 setOpen(!open);
               }}
             />

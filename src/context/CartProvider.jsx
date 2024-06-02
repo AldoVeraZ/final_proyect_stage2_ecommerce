@@ -24,6 +24,7 @@ function CartProvider({ children }) {
     const prodFinded = productsCartList.find(
       (prod) => prod.product?._id === _id
     );
+    console.log(productsCartList);
 
     if (prodFinded) {
       const newCart = productsCartList.map((prod) =>

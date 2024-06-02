@@ -1,16 +1,15 @@
 import React from "react";
 import Counter from "./Counter";
 
-function CartItem({ _id, movieData, quantity }) {
-  console.log("Brand:", movieData.brand);
+function CartItem({ product, quantity, edit = true }) {
   return (
     <div className="cart-item__container">
       <h2>
-        {movieData.name}
-        <span>({movieData.brand})</span>
+        {product.name}
+        <span>({product.brand})</span>
       </h2>
-      <p>{movieData.category}</p>
-      <Counter _id={_id} movieData={movieData} initialValue={quantity} />
+      <p>{product.category}</p>
+      {edit ? <Counter _id={product._id} initialValue={quantity} /> : undefined}
     </div>
   );
 }

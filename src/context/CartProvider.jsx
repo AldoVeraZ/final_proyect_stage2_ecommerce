@@ -1,52 +1,93 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CartContext } from "./CartContext";
+import { editCart, getCart, postCart } from "../util/api";
 
 function CartProvider({ children }) {
-  const [moviesCartList, setMoviesCartList] = useState([]);
+  const [idCart, setIdCart] = useState(null);
+  const [productsCartList, setProductsCartList] = useState([]);
 
-  const addMovie = (data) => {
-    const movieFinded = moviesCartList.find((movie) => movie._id === data._id);
-    if (movieFinded) {
-      setMoviesCartList(
-        moviesCartList.map((movie) => (movie._id === data._id ? data : movie))
+  useEffect(() => {
+    const storedIdCart = localStorage.getItem("cartId");
+    if (storedIdCart) {
+      getCart(storedIdCart).then(({ cart }) => {
+        setProductsCartList(cart.items);
+        setIdCart(storedIdCart);
+      });
+    }
+  }, []);
+
+  const addProd = ({ _id, quantity }) => {
+    const data = {
+      quantity,
+      product: _id,
+    };
+    const prodFinded = productsCartList.find(
+      (prod) => prod.product?._id === _id
+    );
+
+    if (prodFinded) {
+      const newCart = productsCartList.map((prod) =>
+        prod.product?._id === data.product ? data : prod
+      );
+      editCart(idCart, newCart).then(({ cart }) =>
+        setProductsCartList(cart.items)
       );
     } else {
-      setMoviesCartList([...moviesCartList, data]);
+      if (!idCart) {
+        postCart([data]).then(({ cart }) => {
+          localStorage.setItem("cartId", cart._id);
+          setIdCart(cart._id);
+          setProductsCartList(cart.items);
+        });
+      } else {
+        const newCart = [...productsCartList, data];
+        editCart(idCart, newCart).then(({ cart }) =>
+          setProductsCartList(cart.items)
+        );
+      }
     }
   };
 
-  const removeMovie = (id) => {
-    /* vamos a buscar primero */
-    const movieFinded = moviesCartList.find((movie) => movie._id === id);
-    /* si se ecnotro algo */
-    if (movieFinded?.quantity > 1) {
-      console.log("Econtre la Movie");
-      /* en el caso de que sume */
-      setMoviesCartList(
-        moviesCartList.map((movie) =>
-          movie._id === id
+  const removeProd = (id) => {
+    const prodFinded = productsCartList.find(
+      (prod) => prod.product?._id === id
+    );
+    if (idCart) {
+      if (prodFinded?.quantity > 1) {
+        const newCart = productsCartList.map((prod) =>
+          prod.product._id === id
             ? {
-                ...movie,
-                quantity: movie.quantity - 1,
+                ...prod,
+                quantity: prod.quantity - 1,
               }
-            : movie
-        )
-      );
-    } else {
-      /* si la cantidad 1 lo tenemos que restar y ya quiero que lo quite */
-      setMoviesCartList(moviesCartList.filter((movie) => movie._id !== id));
-      /* Cantidad -1 y si cantidad es 0 lo quito,  */
-      /* quedate con todos los objetos con el filtrado, lo que tiene que coincidir y la condicion del callback es lo q tiene que quedar
-      que filtre todas las peliculas cuyo id no coincidan con el que estamos enviando por parametro, va a dejar a todos los que no coinciden */
+            : prod
+        );
+        editCart(idCart, newCart).then(({ cart }) =>
+          setProductsCartList(cart.items)
+        );
+      } else {
+        const newCart = productsCartList.filter(
+          (prod) => prod.product?._id !== id
+        );
+        editCart(idCart, newCart).then(({ cart }) =>
+          setProductsCartList(cart.items)
+        );
+      }
     }
   };
 
+  const resetCart = () => {
+    setIdCart(null);
+    localStorage.removeItem("cartId");
+    setProductsCartList([]);
+  };
   return (
     <CartContext.Provider
       value={{
-        moviesCartList,
-        addMovie,
-        removeMovie,
+        productsCartList,
+        addProd,
+        removeProd,
+        resetCart,
       }}
     >
       {children}

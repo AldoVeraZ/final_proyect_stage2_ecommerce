@@ -1,5 +1,10 @@
 import { useContext, useState } from "react";
-import { faClose, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faClose,
+  faDollar,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 import { CartContext } from "../context/CartContext";
 
@@ -8,7 +13,8 @@ import Modal from "./Modal";
 import CartItem from "./CartItem";
 
 function Cart() {
-  const { moviesCartList } = useContext(CartContext);
+  const { productsCartList } = useContext(CartContext);
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
   return (
@@ -18,12 +24,12 @@ function Cart() {
           icon={faShoppingCart}
           className="cart__navbar-button"
           action={() => setOpen(!open)}
-          disabled={!moviesCartList.length}
+          disabled={!productsCartList.length}
         />
-        {moviesCartList.length ? (
+        {productsCartList.length ? (
           <div className="cart__badge">
             <span>
-              {moviesCartList.reduce((acc, movie) => acc + movie.quantity, 0)}
+              {productsCartList.reduce((acc, movie) => acc + movie.quantity, 0)}
             </span>
           </div>
         ) : undefined}
@@ -37,9 +43,20 @@ function Cart() {
               action={() => setOpen(!open)}
             />
           </div>
-          {moviesCartList.map((data) => (
-            <CartItem key={data._id} {...data} />
+          {productsCartList.map((data) => (
+            <CartItem key={data.product._id} {...data} />
           ))}
+          <div id="wallet_container" className="modal__footer">
+            <Button
+              icon={faDollar}
+              className="modal__btn-buy"
+              label="Comprar"
+              action={() => {
+                navigate("/checkout");
+                setOpen(!open);
+              }}
+            />
+          </div>
         </>
       </Modal>
     </>

@@ -13,15 +13,7 @@ function Card({ _id, name, imgUrl, category, brand, shortDesc, delivery }) {
         <p>{shortDesc}</p>
         {delivery ? <p>Envío sin cargo.</p> : undefined}
       </div>
-      <Counter
-        _id={_id}
-        movieData={{
-          name,
-          imgUrl,
-          category,
-          brand,
-        }}
-      />
+      <Counter _id={_id} />
     </div>
   );
 }

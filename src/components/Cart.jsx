@@ -52,7 +52,7 @@ function Cart() {
               className="modal__btn-buy"
               label="Comprar"
               action={() => {
-                resetCart();
+                navigate("/checkout");
                 setOpen(!open);
               }}
             />

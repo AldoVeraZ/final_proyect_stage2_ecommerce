@@ -9,6 +9,7 @@ import Contact from "../pages/Contact"; // Importar la página Contact del Proye
 import Upload from "../pages/Upload"; // Importar la página Upload del Proyecto 1
 import Footer from "../layout/Footer";
 import Checkout from "../pages/Checkout";
+import Success from "../pages/Success";
 
 function RouterApp() {
   return (
@@ -21,6 +22,7 @@ function RouterApp() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout/success" element={<Success />} />
         </Routes>
       </div>
       <Footer />

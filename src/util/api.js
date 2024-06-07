@@ -49,6 +49,6 @@ export const getCart = async (id) => {
 };
 
 export const postPreferenceMP = async (body) => {
-  const resp = await axiosInstance.post(`checkout`);
+  const resp = await axiosInstance.post(`checkout`, body);
   return resp.data;
 };

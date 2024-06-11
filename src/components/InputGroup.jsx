@@ -7,13 +7,14 @@ function InputGroup({
   onChange = () => {},
   validation = () => "",
   values,
+  error,
   ...props
 }) {
-  const [error, setError] = useState("");
+  const [localError, setLocalError] = useState("");
 
   const validatedOnChange = (e) => {
     onChange(e);
-    setError(validation(e.target.value));
+    setLocalError(validation(e.target.value));
   };
 
   return (
@@ -30,8 +31,7 @@ function InputGroup({
           type={inputType}
           onChange={validatedOnChange}
           value={values[id]}
-          className={`input-group__input${error ? " error" : ""}`}
-          required
+          className={`input-group__input${error || localError ? " error" : ""}`}
           {...props}
         ></textarea>
       ) : (
@@ -41,12 +41,11 @@ function InputGroup({
           type={inputType}
           onChange={validatedOnChange}
           value={inputType !== "file" ? values[id] : ""}
-          className={`input-group__input${error ? " error" : ""}`}
-          /*      required */
+          className={`input-group__input${error || localError ? " error" : ""}`}
           {...props}
         />
       )}
-      <span className="input-group__text-error">{error}</span>
+      <span className="input-group__text-error">{error || localError}</span>
     </div>
   );
 }

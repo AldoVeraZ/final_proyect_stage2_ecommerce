@@ -1,20 +1,33 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../img/jason.svg"; // Asumiendo que tienes esta imagen en tu proyecto
-import menuIcon from "../img/barswhite.svg"; // Asumiendo el ícono de menú
-import closeIcon from "../img/close-svgrepo-com.svg"; // Asumiendo el ícono de cerrar
+import { useNavigate } from "react-router-dom";
+import logo from "../img/jason.svg";
+import menuIcon from "../img/barswhite.svg";
+import closeIcon from "../img/close-svgrepo-com.svg";
 import Cart from "../components/Cart";
 
 function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/search?q=${searchQuery}`);
+  };
 
   return (
     <header className="top-header horizontal-padding">
       <div>
         <div className="top-bar">
           <span className="search-form">
-            <form>
-              <input type="search" placeholder="Buscar..." />
+            <form onSubmit={handleSearch}>
+              <input
+                type="search"
+                placeholder="Buscar..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                required
+              />
               <button type="submit">Buscar</button>
             </form>
           </span>
@@ -29,7 +42,7 @@ function NavBar() {
 
         <nav>
           <div className="logo">
-            <Link to="/about">
+            <a href="/about">
               <img src={logo} alt="logo" />
               <div>
                 <h5>
@@ -37,23 +50,23 @@ function NavBar() {
                   FROM HELL
                 </h5>
               </div>
-            </Link>
+            </a>
           </div>
           <div className="toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <img src={isMenuOpen ? closeIcon : menuIcon} alt="menu toggle" />
           </div>
           <ul className={`menu ${isMenuOpen ? "active" : ""}`}>
             <li>
-              <Link to="/">Home</Link>
+              <a href="/">Home</a>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <a href="/about">About</a>
             </li>
             <li>
-              <Link to="/upload">Upload</Link>
+              <a href="/upload">Upload</a>
             </li>
             <li>
-              <Link to="/contact">Contactus</Link>
+              <a href="/contact">Contactus</a>
             </li>
           </ul>
         </nav>

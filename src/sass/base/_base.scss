@@ -35,6 +35,15 @@ body {
     align-items: center;
     height: 100vh; /* Ocupa toda la altura de la ventana del navegador */
   }
+  .message {
+    background-color: black;
+    color: #721c24;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    text-align: center;
+  }
 
   .spinner {
     border: 4px solid rgba(0, 0, 0, 0.1);

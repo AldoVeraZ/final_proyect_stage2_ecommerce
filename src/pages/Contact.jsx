@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useState } from "react";
 import { postMessage } from "../util/api";
 import FormLayout from "../layout/FormLayout";
 
@@ -11,21 +10,42 @@ const INITIAL_STATE = {
 };
 
 function Contact() {
+  const [errors, setErrors] = useState({});
   const inputProps = {
     name: {
       inputLabel: "Nombre y apellido",
+      error: errors.name,
     },
     email: {
       inputLabel: "Correo electrónico",
       inputType: "email",
+      error: errors.email,
     },
     subject: {
       inputLabel: "Asunto",
+      error: errors.subject,
     },
     body: {
       inputLabel: "Mensaje",
       inputType: "textarea",
+      error: errors.body,
     },
+  };
+
+  const handleSubmit = async (values) => {
+    const response = await postMessage(values);
+    if (!response.ok) {
+      setErrors(
+        response.errors.reduce((acc, error) => {
+          const key = Object.keys(error)[0];
+          acc[key] = error[key];
+          return acc;
+        }, {})
+      );
+    } else {
+      setErrors({});
+      alert("Mensaje enviado con éxito");
+    }
   };
 
   return (
@@ -34,7 +54,7 @@ function Contact() {
         className="contact"
         title="Envíanos un mensaje"
         inputProps={inputProps}
-        onSubmit={postMessage}
+        onSubmit={handleSubmit}
         labelSubmit="Enviar mensaje"
         initialState={INITIAL_STATE}
       />

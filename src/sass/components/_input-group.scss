@@ -23,3 +23,11 @@
     color: $blood;
   }
 }
+
+.input-group__input.error {
+  border-color: red; // Cambia el color del borde para indicar error
+}
+
+.input-group__text-error {
+  color: red; // Cambia el color del texto del error
+}

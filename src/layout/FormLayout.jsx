@@ -6,12 +6,13 @@ import InputGroup from "../components/InputGroup";
 import { useForm } from "../hooks/useForm";
 
 function FormLayout({
-  className, // Añade esto
+  className,
   title,
   inputProps,
   initialState,
   onSubmit,
   labelSubmit,
+  errors = {},
 }) {
   const { values, handleInputChange, resetForm } = useForm(initialState);
   const [loadingForm, setLoadingForm] = useState(false);
@@ -39,6 +40,7 @@ function FormLayout({
             id={key}
             onChange={handleInputChange}
             values={values}
+            error={errors[key]}
             {...props}
           />
         ))}
